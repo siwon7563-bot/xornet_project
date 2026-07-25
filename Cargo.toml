@@ -1,0 +1,22 @@
+[package]
+name = "xornet"
+version = "4.5.0"
+edition = "2021"
+
+[dependencies]
+# 양자내성암호 ML-KEM-768 (Kyber768) 구현체
+pqcrypto-kyber = "0.8"
+pqcrypto-traits = "0.3"
+
+# 해시 및 암호화 엔진 (RustCrypto 표준)
+sha3 = "0.10"       # KDF v3.0용 SHA-3-512
+sha2 = "0.10"       # Token_ID 및 HMAC용 SHA-256
+hmac = "0.12"       # TPM 이중 래핑용 HMAC-SHA256
+aes-gcm = "0.10"    # 세션 데이터 암호화 및 TPM 래핑 (AES-256-GCM)
+rand = "0.8"        # 세션 난수(Nonce) 생성
+
+# 제로 트러스트 메모리 안전 관리 (Explicit Zeroization)
+zeroize = { version = "1.7", features = ["derive"] }
+
+# 부채널 방어를 위한 상수 시간(Constant-Time) 연산 지원
+subtle = "2.5"
